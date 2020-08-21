@@ -1,6 +1,7 @@
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.rule.ActivityTestRule
 import com.example.testapp.MainActivity
+import com.example.testapp.R
 import com.example.testapp.ui.dashboard.DashboardFragment
 import com.example.testapp.ui.home.HomeFragment
 import com.example.testapp.ui.notifications.NotificationsFragment
@@ -45,12 +46,38 @@ class MainTest : TestCase() {
                     }
                 }
 
+                step("Click Button") {
+                    BottomNavigationScreen {
+                        click {
+                            isVisible()
+                            click()
+                        }
+                    }
+                }
+                step("fragment home") {
+                    HomeFragmentScreen {
+                        texHome {
+                            isVisible()
+                            hasText("This is home Fragment")
+                        }
+                    }
+                }
                 step("Click BottomNavigationScreen") {
                     BottomNavigationScreen {
-//                        activityTestRule.
-//                        val factory = HomeFragment()
-//                        val scenario = launchFragmentInContainer<HomeFragment>(
-//                                null, factory)
+                        mBottomNavigationView {
+                            setSelectedItem(R.id.navigation_dashboard)
+                        }
+                    }
+                }
+                step("Dashboard Fragment Screen") {
+                    DashboardFragmentScreen {
+                        btnClickCount {
+                            isVisible()
+                            click()
+                            click()
+                            click()
+                            hasText("3")
+                        }
                     }
                 }
             }

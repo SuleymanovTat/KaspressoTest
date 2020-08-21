@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -26,6 +27,12 @@ class DashboardFragment : Fragment() {
         dashboardViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
+        val btnClickCount: Button = root.findViewById(R.id.btnClickCount)
+        var i = 0
+        btnClickCount.setOnClickListener {
+            i = i + 1
+            btnClickCount.text = i.toString()
+        }
         return root
     }
 }

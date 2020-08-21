@@ -1,6 +1,7 @@
 package com.example.testapp
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
@@ -16,6 +17,7 @@ class BottomNavigationActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_bottom_navigation)
         val navView: BottomNavigationView = findViewById(R.id.navView)
+        val click: Button = findViewById(R.id.click)
         val fragment1: Fragment = HomeFragment()
         val fragment2: Fragment = DashboardFragment()
         val fragment3: Fragment = NotificationsFragment()
@@ -44,6 +46,9 @@ class BottomNavigationActivity : AppCompatActivity() {
             }
             return@OnNavigationItemSelectedListener false
         })
-
+        click.setOnClickListener {
+            fm.beginTransaction().hide(active).show(fragment1).commit()
+            active = fragment1
+        }
     }
 }

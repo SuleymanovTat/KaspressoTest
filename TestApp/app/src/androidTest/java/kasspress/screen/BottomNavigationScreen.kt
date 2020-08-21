@@ -1,15 +1,9 @@
-import android.view.View
 import com.agoda.kakao.bottomnav.KBottomNavigationView
-import com.agoda.kakao.common.views.KView
-import com.agoda.kakao.edit.KEditText
-import com.agoda.kakao.navigation.KNavigationView
 import com.agoda.kakao.text.KButton
+import com.agoda.kakao.text.KTextView
 import com.example.testapp.BottomNavigationActivity
-import com.example.testapp.MainActivity
-import com.example.testapp.NextActivity
 import com.example.testapp.R
 import com.kaspersky.kaspresso.screens.KScreen
-import java.util.regex.Matcher
 
 
 object BottomNavigationScreen : KScreen<BottomNavigationScreen>() {
@@ -19,4 +13,6 @@ object BottomNavigationScreen : KScreen<BottomNavigationScreen>() {
 
     //BottomNavigationView
     val mBottomNavigationView = KBottomNavigationView { withId(R.id.navView) }
+    val click = KButton { withId(R.id.click) }
+
 }
